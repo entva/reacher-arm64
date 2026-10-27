@@ -3,7 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        default: v0.11.10
+        description: Upstream release tag, for example v0.11.10
+        required: true
+        type: string
 jobs:
   build:
     runs-on: ubuntu-26.04-arm
