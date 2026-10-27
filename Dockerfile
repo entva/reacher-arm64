@@ -1,11 +1,11 @@
-FROM rust:1-alpine AS build
+FROM rust:1.99.1-alpine3.24 AS build
 RUN apk add --no-cache musl-dev perl make gcc linux-headers
 WORKDIR /src
 COPY . .
 ENV SQLX_OFFLINE=true
 RUN cargo build --release --bin reacher_backend
 
-FROM alpine:3
+FROM alpine:3.24.3
 RUN apk add --no-cache chromium chromium-chromedriver ca-certificates \
  && adduser -D -h /home/reacher reacher
 WORKDIR /home/reacher
